@@ -1,8 +1,7 @@
 import CompetitionSection from "../components/CompetitionSection";
-import Header from "../components/Header";
-import Navbar from "../components/LandingPage/Navbar";
-import Home from "../components/LandingPage/Home";
 import About from "../components/LandingPage/About";
+import Home from "../components/LandingPage/Home";
+import Navbar from "../components/LandingPage/Navbar";
 
 const LandingPage = () => {
   return (
@@ -10,6 +9,7 @@ const LandingPage = () => {
       <Navbar />
       <Home title="Bangun Masa Depan Bersama, Mulai dari " />
       <About tema="Open Source Arena: Battle of Brilliant Minds" />
+      <CompetitionSection />
     </div>
   );
 };
