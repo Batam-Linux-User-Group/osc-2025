@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Maskot, segitiga } from "../../assets";
+import { Link } from "react-router-dom";
 
 
 interface HomePage {
@@ -161,12 +162,12 @@ const Home = ({ title }: HomePage) => {
 
           {/* CTA Button */}
           <div className="pt-4">
-            <button
+            <Link to="/daftar"
               className="bg-transparent border-2 border-blue-500 text-white px-8 py-1 rounded-full text-lg font-semibold hover:bg-blue-500 hover:border-blue-500 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25"
               aria-label="Register for the open source challenge"
             >
               Daftar
-            </button>
+            </Link>
           </div>
         </div>
 
