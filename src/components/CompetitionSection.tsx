@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   mascotRightBottom,
   shapeLeftBottom,
@@ -9,7 +10,43 @@ import {
   cardSysadmin,
 } from "../assets/LandingPage/CompetitionSection";
 
+type ModalKey = "mascot" | "web" | "netsim" | "sysadmin" | null;
+
+interface ModalContent {
+  [key: string]: {
+    title: string;
+    description: string;
+  };
+}
+
+const modalContent: ModalContent = {
+  mascot: {
+    title: "Mascot Design",
+    description:
+      "Kompetisi perancangan karakter maskot yang mencerminkan tema OSC 2025. Penilaian didasarkan pada kreativitas, orisinalitas, dan relevansi desain. Karya pemenang akan dijadikan ikon resmi maskot OSC. Pembuatan maskot dilakukan secara online, dengan batas akhir pengumpulan karya pada tanggal 15 Agustus. Presentasi hasil karya akan dilakukan pada tanggal 17 Agustus.",
+  },
+  web: {
+    title: "Web Design",
+    description:
+      "Kompetisi perancangan antarmuka web dengan penilaian berdasarkan ketepatan penggunaan CSS dan kesesuaian dengan tema. Peserta diminta menyesuaikan desain dengan arahan CSS yang diberikan. Lomba ini akan dilaksanakan secara offline pada tanggal 16 Agustus, di lokasi yang akan diinformasikan kemudian.",
+  },
+  netsim: {
+    title: "Network Simulation",
+    description:
+      "Kompetisi simulasi jaringan di mana peserta diminta menyelesaikan tantangan jaringan menggunakan perangkat lunak seperti Cisco Packet Tracer. Lomba akan dilaksanakan secara offline pada tanggal 16 Agustus.",
+  },
+  sysadmin: {
+    title: "System Administration",
+    description:
+      "Kompetisi administrasi sistem yang menantang peserta untuk mengelola dan mengamankan sistem berbasis Linux dalam skenario dunia nyata. Lomba ini akan diadakan pada tanggal 16 Agustus secara offline.",
+  },
+};
+
 const CompetitionSection = () => {
+  const [openModal, setOpenModal] = useState<ModalKey>(null);
+
+  const closeModal = () => setOpenModal(null);
+
   return (
     <div className="flex flex-col items-center justify-center relative bg-[#423E40] py-10 overflow-hidden">
       <img
@@ -50,27 +87,66 @@ const CompetitionSection = () => {
           src={cardMascotDesign}
           alt="cardMascotDesign"
           draggable={false}
-          className="w-52 hover:-translate-y-5 transition duration-100"
+          onClick={() => setOpenModal("mascot")}
+          className="w-52 cursor-pointer hover:-translate-y-5 transition duration-100"
         />
         <img
           src={cardWebDesign}
           alt="cardWebDesign"
           draggable={false}
-          className="w-52 hover:-translate-y-5 transition duration-100"
+          onClick={() => setOpenModal("web")}
+          className="w-52 cursor-pointer hover:-translate-y-5 transition duration-100"
         />
         <img
           src={cardNetsim}
           alt="cardNetsim"
           draggable={false}
-          className="w-52 hover:-translate-y-5 transition duration-100"
+          onClick={() => setOpenModal("netsim")}
+          className="w-52 cursor-pointer hover:-translate-y-5 transition duration-100"
         />
         <img
           src={cardSysadmin}
           alt="cardSysadmin"
           draggable={false}
-          className="w-52 hover:-translate-y-5 transition duration-100"
+          onClick={() => setOpenModal("sysadmin")}
+          className="w-52 cursor-pointer hover:-translate-y-5 transition duration-100"
         />
       </div>
+
+      {openModal && (
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50">
+          <div className="bg-white max-w-md w-full p-6 rounded-lg shadow-xl text-gray-800 relative" style={{
+        animation: 'fadeInZoom 0.3s ease-out',
+        transformOrigin: 'center',
+      }}
+    >
+            <button
+              onClick={closeModal}
+              className="absolute top-2 right-3 text-xl font-bold text-gray-500 hover:text-red-500"
+            >
+              &times;
+            </button>
+            <h3 className="text-xl font-semibold mb-4">
+              {modalContent[openModal].title}
+            </h3>
+            <p>{modalContent[openModal].description}</p>
+          </div>
+        </div>
+      )}
+      <style>
+        {`
+@keyframes fadeInZoom {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+`}
+      </style>
     </div>
   );
 };

@@ -68,7 +68,7 @@ const calculateTimeLeft = (deadline: Date): TimeLeft => {
 
 const Home = ({ title }: HomePage) => {
   // DEADLINE
-  const deadline = new Date("2025-08-20T00:00:00");
+  const deadline = new Date("2025-08-16T00:00:00");
   const [timeLeft, setTimeLeft] = useState<TimeLeft>(
     calculateTimeLeft(deadline)
   );
@@ -94,25 +94,25 @@ const Home = ({ title }: HomePage) => {
   }, [deadline]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#423E40] via-[#5b5557] to-[#A89EA3] text-white px-8 py-24 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-[#423E40] via-[#5b5557] to-[#A89EA3] text-white px-5 py-14 md:py-24 relative overflow-hidden">
       {/* Tech Corner Decorations */}
-      <div className="absolute top-12 left-0 p-6">
+      <div className="absolute hidden md:block top-12 left-0 p-6">
         <CornerDecoration isTopLeft={true} />
       </div>
-      <div className="absolute bottom-0 right-0 p-6">
+      <div className="absolute hidden md:block bottom-0 right-0 p-6">
         <CornerDecoration isTopLeft={false} />
       </div>
 
       {/* Orange/Blue Corner Accents */}
-      <div className="absolute top-14 right-6 w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded"></div>
-      <div className="absolute top-16 right-8 w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded"></div>
+      <div className="absolute top-14 hidden md:block right-6 w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded"></div>
+      <div className="absolute top-16 hidden md:block right-8 w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded"></div>
       <div className="absolute bottom-6 left-6 w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded"></div>
       <div className="absolute bottom-8 left-8 w-8 h-8 bg-gradient-to-br from-orange-500 to-orange-600 rounded"></div>
 
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-16 relative z-10">
         {/* Left Content */}
         <div className="lg:w-1/2 space-y-2 flex flex-col justify-center pt-10 md:ps-10">
-          <div className="space-y-6">
+          <div className="space-y-2 md:space-y-6">
             <h1 className="text-3xl lg:text-3xl xl:text-4xl font-bold leading-tight">
               {title} <span className="text-orange-500">Open Source!</span>
             </h1>
@@ -152,11 +152,8 @@ const Home = ({ title }: HomePage) => {
                   <div className="text-sm lg:text-base text-slate-400 uppercase tracking-wide">
                     {item.label}
                   </div>
-                  {index < 3 && (
-                    <span className="text-4xl lg:text-5xl font-bold text-white mx-2 self-center">
-                      :
-                    </span>
-                  )}
+                  <p className="hidden">{index}</p>
+                  
                 </div>
               ))}
             </div>

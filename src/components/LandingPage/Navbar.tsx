@@ -4,6 +4,7 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showNavbar, setShowNavbar] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [hasScrolled, setHasScrolled] = useState(false);
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
   const closeMenu = () => setMenuOpen(false);
@@ -11,6 +12,8 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
+
+      setHasScrolled(currentScrollY > 10); // Menandai jika sudah scroll
 
       if (currentScrollY > lastScrollY && currentScrollY > 50) {
         // Scroll ke bawah
@@ -24,14 +27,13 @@ const Navbar = () => {
     };
 
     window.addEventListener('scroll', handleScroll);
-
     return () => window.removeEventListener('scroll', handleScroll);
   }, [lastScrollY]);
 
   return (
-    <nav className={`w-full fixed top-0 z-50 transition-transform duration-500 ${
+    <nav className={`w-full fixed top-0 z-50 transition-all duration-500 ease-in-out ${
       showNavbar ? 'translate-y-0' : '-translate-y-full'
-    } bg-black/50 backdrop-blur-md text-slate-50 shadow-2xl border-b border-slate-500/20`}>
+    } ${hasScrolled ? 'bg-black/50 backdrop-blur-md shadow-2xl border-b border-slate-500/20' : 'bg-transparent'} text-slate-50`}>
       
       <div className="max-w-7xl mx-auto px-6 sm:px-10 py-4 flex justify-between items-center">
         {/* Logo */}
