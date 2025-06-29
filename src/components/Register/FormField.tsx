@@ -1,0 +1,46 @@
+
+import type React from "react"
+import type { LucideIcon } from "lucide-react"
+
+interface FormFieldProps {
+    label: string
+    name: string
+    type?: string
+    value: string
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+    placeholder: string
+    error?: string
+    icon: LucideIcon
+  }
+  
+
+export default function FormField({
+  label,
+  name,
+  type = "text",
+  value,
+  onChange,
+  placeholder,
+  error,
+  icon: Icon,
+}: FormFieldProps) {
+  return (
+    <div>
+      <label className="block text-white text-sm font-medium mb-2">
+        <Icon className="inline mr-2" size={16} />
+        {label}
+      </label>
+      <input
+        type={type}
+        name={name}
+        value={value}
+        onChange={onChange}
+        className={`w-full px-4 py-3 bg-gray-800 border rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 transition-all ${
+          error ? "border-red-500 focus:ring-red-500" : "border-gray-600 focus:ring-orange-500 focus:border-orange-500"
+        }`}
+        placeholder={placeholder}
+      />
+      {error && <p className="text-red-400 text-sm mt-1">{error}</p>}
+    </div>
+  )
+}
