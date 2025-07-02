@@ -1,4 +1,7 @@
 import { useState, useEffect } from 'react';
+import { logo } from '../../assets';
+import { HashLink } from 'react-router-hash-link';
+
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -12,15 +15,12 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-
-      setHasScrolled(currentScrollY > 10); // Menandai jika sudah scroll
+      setHasScrolled(currentScrollY > 10);
 
       if (currentScrollY > lastScrollY && currentScrollY > 50) {
-        // Scroll ke bawah
-        setShowNavbar(false);
+        setShowNavbar(false); // Scroll ke bawah
       } else {
-        // Scroll ke atas
-        setShowNavbar(true);
+        setShowNavbar(true);  // Scroll ke atas
       }
 
       setLastScrollY(currentScrollY);
@@ -30,6 +30,14 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [lastScrollY]);
 
+  const menuItems = [
+    { key: "beranda", label: "Beranda" },
+    { key: "tentang-lomba", label: "Tentang Lomba" },
+    { key: "kategori", label: "Kategori" },
+    { key: "timeline", label: "Timeline" },
+    { key: "kontak", label: "Kontak" },
+  ];
+
   return (
     <nav className={`w-full fixed top-0 z-50 transition-all duration-500 ease-in-out ${
       showNavbar ? 'translate-y-0' : '-translate-y-full'
@@ -38,32 +46,26 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-6 sm:px-10 py-4 flex justify-between items-center">
         {/* Logo */}
         <div className="text-3xl font-bold tracking-tight relative group">
-          <a 
-            href="/" 
+          <a href='/'
             className="hover:text-slate-300 transition-all duration-300 relative z-10 text-slate-50 hover:drop-shadow-lg"
           >
-            Logo
+            <img src={logo} alt="logo" className='w-auto h-12' />
             <span className="absolute inset-0 bg-slate-400/20 blur-lg group-hover:blur-xl group-hover:bg-slate-300/30 transition-all duration-300 -z-10"></span>
           </a>
         </div>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex space-x-10">
-          {[
-            { key: "about", label: "About" },
-            { key: "tentang-lomba", label: "Tentang Lomba" },
-            { key: "events", label: "Events" },
-            { key: "contact", label: "Contact" }
-          ].map((item) => (
-            <a
+          {menuItems.map((item) => (
+            <HashLink
               key={item.key}
-              href={`#${item.key}`}
+              to={`/#${item.key}`}
               className="text-sm font-semibold hover:text-slate-300 transition-all duration-300 relative group px-3 py-2 rounded-lg hover:bg-slate-700/30"
             >
               {item.label}
               <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-slate-400 group-hover:w-full transition-all duration-300 rounded-full"></span>
               <span className="absolute inset-0 bg-slate-400/0 group-hover:bg-slate-400/10 rounded-lg transition-all duration-300"></span>
-            </a>
+            </HashLink>
           ))}
         </div>
 
@@ -93,12 +95,7 @@ const Navbar = () => {
         menuOpen ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0'
       }`}>
         <div className="bg-gradient-to-b from-slate-900/50 to-slate-950/50 px-6 pb-6 pt-2 space-y-2 border-t border-slate-500/20 backdrop-blur-sm">
-          {[
-            { key: "about", label: "About" },
-            { key: "tentang-lomba", label: "Tentang Lomba" },
-            { key: "events", label: "Events" },
-            { key: "contact", label: "Contact" }
-          ].map((item, index) => (
+          {menuItems.map((item, index) => (
             <a
               key={item.key}
               href={`#${item.key}`}
@@ -106,7 +103,6 @@ const Navbar = () => {
               className="block text-sm font-semibold hover:text-slate-300 transition-all duration-300 px-4 py-3 rounded-lg hover:bg-slate-700/30 relative group transform hover:translate-x-1"
               style={{
                 animationDelay: `${index * 50}ms`,
-                animation: menuOpen ? 'slideInLeft 0.3s ease-out forwards' : 'none'
               }}
             >
               <span className="relative z-10">{item.label}</span>

@@ -1,14 +1,25 @@
+import { Link } from "react-router-dom";
+import { logo } from "../../assets";
 import BLUG from "../../assets/blug.svg"
+import { HashLink } from "react-router-hash-link";
+import { Phone, MapPin, Instagram, Mail } from "lucide-react";
 const Footer = () => {
+  const menuItems = [
+    { key: "beranda", label: "Beranda" },
+    { key: "tentang-lomba", label: "Tentang Lomba" },
+    { key: "kategori", label: "Kategori" },
+    { key: "timeline", label: "Timeline" },
+    { key: "kontak", label: "Kontak" },
+  ];
     return (
-      <div className="bg-[#423E40] text-white px-6 py-12">
+      <div id="kontak" className="bg-[#423E40] text-white px-6 py-12">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Logo Section */}
           <div className="flex flex-col items-center md:items-start">
             <div className="flex space-x-6 mb-4">
               <img 
-                src="https://via.placeholder.com/100x40?text=Logo1" 
-                alt="Logo 1" 
+                src={logo}
+                alt="Logo 1"
                 className="h-10"
               />
               <img 
@@ -18,7 +29,7 @@ const Footer = () => {
               />
             </div>
             <p className="text-sm text-gray-300 text-center md:text-left">
-              GO OPEN SOURCE !!
+              Organized by Batam Linux User Group.
             </p>
           </div>
   
@@ -27,15 +38,23 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Kontak</h3>
             <ul className="space-y-2 text-sm">
               <li className="flex items-center">
-                <span className="mr-2">📞</span>
+                <span className="mr-2"><Phone size={15}/></span>
                 <span>082388304818 - Aurel</span>
               </li>
               <li className="flex items-center">
-                <span className="mr-2">📞</span>
+                <span className="mr-2"><Phone size={15}/></span>
                 <span>087851618604 - Kayla</span>
               </li>
               <li className="flex items-center">
-                <span className="mr-2">📍</span>
+                <span className="mr-2"><Instagram size={15}/></span>
+                <span>@batamlinux</span>
+              </li>
+              <li className="flex items-center">
+                <span className="mr-2"><Mail size={15}/></span>
+                <span>aibatamlinux@gmail.com</span>
+              </li>
+              <li className="flex">
+                <span className="mr-2"><MapPin size={15}/></span>
                 <span>Jl Ahmad Yani Politeknik Negeri Batam, Batam, Riau, Indonesia 29431</span>
               </li>
             </ul>
@@ -45,26 +64,19 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2 text-sm">
-              <li>
-                <a href="/home" className="hover:text-gray-300 transition-colors">
-                  Home
-                </a>
+              {menuItems.map((item) => (
+                <li>
+                <HashLink to={`/#${item.key}`} className="hover:text-gray-300 transition-colors">
+                  {item.label}
+                </HashLink>
               </li>
+              ))}
               <li>
-                <a href="/about" className="hover:text-gray-300 transition-colors">
-                  About
-                </a>
+                <Link to={'/daftar'} className="hover:text-gray-300 transition-colors">
+                Daftar Lomba
+                </Link>
               </li>
-              <li>
-                <a href="/services" className="hover:text-gray-300 transition-colors">
-                  Services
-                </a>
-              </li>
-              <li>
-                <a href="/contact" className="hover:text-gray-300 transition-colors">
-                  Contact
-                </a>
-              </li>
+              
             </ul>
           </div>
         </div>

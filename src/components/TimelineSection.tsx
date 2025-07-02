@@ -7,7 +7,7 @@ import {
 } from "../assets/LandingPage/TimelineSection";
 const TimelineSection = () => {
   return (
-    <div className="px-3 py-10 relative">
+    <div id="timeline" className="px-3 py-10 relative">
       <div className="flex justify-center">
         <img src={topline} alt="Topline" className=" md:w-1/4" />
       </div>

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Maskot, segitiga } from "../../assets";
+import { arrowbottom, linekanan, linekiri, Maskot, segitiga } from "../../assets";
 import { Link } from "react-router-dom";
 
 
@@ -95,13 +95,13 @@ const Home = ({ title }: HomePage) => {
   }, [deadline]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#423E40] via-[#5b5557] to-[#A89EA3] text-white px-5 py-14 md:py-24 relative overflow-hidden">
+    <div id="beranda" className="min-h-screen bg-gradient-to-br from-[#423E40] via-[#5b5557] to-[#A89EA3] text-white px-5 py-14 md:py-24 relative overflow-hidden">
       {/* Tech Corner Decorations */}
       <div className="absolute hidden md:block top-12 left-0 p-6">
-        <CornerDecoration isTopLeft={true} />
+        <img src={linekiri} alt="" />
       </div>
       <div className="absolute hidden md:block bottom-0 right-0 p-6">
-        <CornerDecoration isTopLeft={false} />
+        <img src={linekanan} alt="" />
       </div>
 
       {/* Orange/Blue Corner Accents */}
@@ -185,11 +185,11 @@ const Home = ({ title }: HomePage) => {
       {/* Bottom Arrow Indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
         <img
-          src={segitiga}
+          src={arrowbottom}
           alt="segitiga"
-          className="animate-bounce w-8 h-8 cursor-pointer"
+          className="animate-bounce w-8 h-auto cursor-pointer"
           onClick={() => {
-            const section = document.getElementById("about");
+            const section = document.getElementById("tentang-lomba");
             section?.scrollIntoView({ behavior: "smooth" });
           }}
         />

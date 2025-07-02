@@ -1,6 +1,6 @@
 import type React from "react";
 import { useState } from "react";
-import { User, School, GraduationCap, Phone, Info, Mail } from "lucide-react";
+import { User, School, GraduationCap, Phone, Info, Mail, SkipBack, ArrowLeft } from "lucide-react";
 import type { FormData, FormErrors } from "./../types";
 import { competitions } from "../constant/competitions";
 import { validateForm } from "../utils/validation";
@@ -10,6 +10,8 @@ import SelectField from "../components/Register/SelectField";
 import SubmitButton from "../components/Register/SubmitButton";
 import SuccessModal from "../components/Register/SuccessModal";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import ModalInfo from "./Register/ModalInfo";
 
 const FormRegister: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
@@ -110,6 +112,8 @@ const FormRegister: React.FC = () => {
     (comp) => comp.id === formData.lomba
   );
 
+  const [openModal, setOpenModal] = useState(false);
+
   return (
     <div className="bg-gradient-to-br from-[#423E40] via-gray-800 to-slate-900 min-h-screen flex items-center justify-center p-4 py-10">
       {/* Background decorative elements */}
@@ -118,9 +122,12 @@ const FormRegister: React.FC = () => {
         <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
         <div className="absolute top-3/4 left-1/2 w-32 h-32 bg-pink-500/10 rounded-full blur-2xl animate-bounce"></div>
       </div>
-      <div className="fixed bottom-10 right-10 z-30 bg-orange-500 text-white rounded-full p-3 shadow-lg hover:bg-orange-600 transition-colors cursor-pointer">
+      <div onClick={() => setOpenModal(true)} className="fixed bottom-10 right-5 z-30 bg-orange-500 text-white rounded-full p-3 shadow-lg hover:bg-orange-600 transition-colors cursor-pointer">
         <Info size={20} />
       </div>
+      <Link to={"/"} className="fixed bottom-25 right-5 z-30 bg-orange-500 text-white rounded-full p-3 shadow-lg hover:bg-orange-600 transition-colors cursor-pointer">
+        <ArrowLeft size={20} />
+      </Link>
       {/* Main Form Container */}
       <div className="relative w-full max-w-md">
         <FormHeader />
@@ -168,14 +175,14 @@ const FormRegister: React.FC = () => {
               name="kartupelajar"
               value={formData.kartupelajar}
               onChange={handleInputChange}
-              placeholder="Masukkan kartu pelajar"
+              placeholder="Masukkan link"
               error={errors.kartupelajar}
               icon={GraduationCap}
               description="Harap masukkan link kartu pelajar yang telah di upload ke google drive, pastikan link tersebut dapat di akses oleh admin."
             />
 
             <FormField
-              label="Nomor HP"
+              label="Nomor Whatsapp"
               name="telepon"
               type="tel"
               value={formData.telepon}
@@ -209,6 +216,7 @@ const FormRegister: React.FC = () => {
           copyToClipboard={copyToClipboard}
         />
       )}
+      <ModalInfo isOpen={openModal} onClose={() => setOpenModal(false)}/>
     </div>
   );
 };

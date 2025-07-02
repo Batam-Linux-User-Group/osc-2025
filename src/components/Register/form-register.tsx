@@ -38,25 +38,25 @@ const FormRegister: React.FC = () => {
     {
       id: "mascot-design",
       name: "Mascot Design",
-      contactNumber: "+62 812-3456-7890",
+      contactNumber: "085763542044",
       whatsapp: "https://chat.whatsapp.com/mascot-design-group",
     },
     {
       id: "web-design",
       name: "Web Design",
-      contactNumber: "+62 813-4567-8901",
+      contactNumber: "081362363862",
       whatsapp: "https://chat.whatsapp.com/web-design-group",
     },
     {
       id: "netsim",
       name: "Network Simulation",
-      contactNumber: "+62 814-5678-9012",
+      contactNumber: "08127003162",
       whatsapp: "https://chat.whatsapp.com/netsim-group",
     },
     {
       id: "sysadmin",
       name: "System Administration",
-      contactNumber: "+62 815-6789-0123",
+      contactNumber: "0895370677717",
       whatsapp: "https://chat.whatsapp.com/sysadmin-group",
     },
   ]

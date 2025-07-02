@@ -5,7 +5,7 @@ interface AboutProps {
 }
 const About = ({tema}: AboutProps) => {
   return (
-    <section id="about" className="relative my-20 px-6 text-center max-w-4xl mx-auto">
+    <section id="tentang-lomba" className="relative my-20 px-6 text-center max-w-4xl mx-auto">
       {/* Vektor Kiri dan Kanan di tengah atas */}
       <div className="relative flex justify-center items-center mb-6">
         <img

@@ -48,7 +48,7 @@ const CompetitionSection = () => {
   const closeModal = () => setOpenModal(null);
 
   return (
-    <div className="flex flex-col items-center justify-center relative bg-[#423E40] py-10 overflow-hidden">
+    <div id="kategori" className="flex flex-col items-center justify-center relative bg-[#423E40] py-10 overflow-hidden">
       <img
         src={mascotRightBottom}
         alt="mascotRightBottom"
