@@ -1,16 +1,24 @@
+import axios from "axios";
+import {
+  ArrowLeft,
+  GraduationCap,
+  Info,
+  Mail,
+  Phone,
+  School,
+  User,
+} from "lucide-react";
 import type React from "react";
 import { useState } from "react";
-import { User, School, GraduationCap, Phone, Info, Mail, SkipBack, ArrowLeft } from "lucide-react";
-import type { FormData, FormErrors } from "./../types";
-import { competitions } from "../constant/competitions";
-import { validateForm } from "../utils/validation";
-import FormHeader from "../components/Register/FormHeader";
+import { Link } from "react-router-dom";
 import FormField from "../components/Register/FormField";
+import FormHeader from "../components/Register/FormHeader";
 import SelectField from "../components/Register/SelectField";
 import SubmitButton from "../components/Register/SubmitButton";
 import SuccessModal from "../components/Register/SuccessModal";
-import axios from "axios";
-import { Link } from "react-router-dom";
+import { competitions } from "../constant/competitions";
+import { validateForm } from "../utils/validation";
+import type { FormData, FormErrors } from "./../types";
 import ModalInfo from "./Register/ModalInfo";
 
 const FormRegister: React.FC = () => {
@@ -122,10 +130,16 @@ const FormRegister: React.FC = () => {
         <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
         <div className="absolute top-3/4 left-1/2 w-32 h-32 bg-pink-500/10 rounded-full blur-2xl animate-bounce"></div>
       </div>
-      <div onClick={() => setOpenModal(true)} className="fixed bottom-10 right-5 z-30 bg-orange-500 text-white rounded-full p-3 shadow-lg hover:bg-orange-600 transition-colors cursor-pointer">
+      <div
+        onClick={() => setOpenModal(true)}
+        className="fixed bottom-10 right-5 z-30 bg-orange-500 text-white rounded-full p-3 shadow-lg hover:bg-orange-600 transition-colors cursor-pointer"
+      >
         <Info size={20} />
       </div>
-      <Link to={"/"} className="fixed bottom-25 right-5 z-30 bg-orange-500 text-white rounded-full p-3 shadow-lg hover:bg-orange-600 transition-colors cursor-pointer">
+      <Link
+        to={"/"}
+        className="fixed bottom-25 right-5 z-30 bg-orange-500 text-white rounded-full p-3 shadow-lg hover:bg-orange-600 transition-colors cursor-pointer"
+      >
         <ArrowLeft size={20} />
       </Link>
       {/* Main Form Container */}
@@ -216,7 +230,7 @@ const FormRegister: React.FC = () => {
           copyToClipboard={copyToClipboard}
         />
       )}
-      <ModalInfo isOpen={openModal} onClose={() => setOpenModal(false)}/>
+      <ModalInfo isOpen={openModal} onClose={() => setOpenModal(false)} />
     </div>
   );
 };

@@ -1,7 +1,6 @@
-import { useState, useEffect } from "react";
-import { arrowbottom, linekanan, linekiri, Maskot, segitiga } from "../../assets";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
+import { arrowbottom, linekanan, linekiri, Maskot } from "../../assets";
 
 interface HomePage {
   title: string;
@@ -14,42 +13,42 @@ interface TimeLeft {
   seconds: number;
 }
 
-const CornerDecoration = ({ isTopLeft }: { isTopLeft: boolean }) => (
-  <svg
-    className="w-80 h-20"
-    viewBox="0 0 320 80"
-    fill="none"
-    aria-hidden="true"
-  >
-    {isTopLeft ? (
-      <>
-        <path
-          d="M0 0H200L220 20H320"
-          stroke="white"
-          strokeWidth="2"
-          fill="none"
-        />
-        <path d="M0 0V60L20 80" stroke="white" strokeWidth="2" fill="none" />
-        {[240, 250, 260, 270].map((x) => (
-          <rect key={x} x={x} y="15" width="4" height="4" fill="white" />
-        ))}
-      </>
-    ) : (
-      <>
-        <path
-          d="M320 80H120L100 60H0"
-          stroke="white"
-          strokeWidth="2"
-          fill="none"
-        />
-        <path d="M320 80V20L300 0" stroke="white" strokeWidth="2" fill="none" />
-        {[40, 52, 64].map((x) => (
-          <rect key={x} x={x} y="61" width="6" height="6" fill="white" />
-        ))}
-      </>
-    )}
-  </svg>
-);
+// const CornerDecoration = ({ isTopLeft }: { isTopLeft: boolean }) => (
+//   <svg
+//     className="w-80 h-20"
+//     viewBox="0 0 320 80"
+//     fill="none"
+//     aria-hidden="true"
+//   >
+//     {isTopLeft ? (
+//       <>
+//         <path
+//           d="M0 0H200L220 20H320"
+//           stroke="white"
+//           strokeWidth="2"
+//           fill="none"
+//         />
+//         <path d="M0 0V60L20 80" stroke="white" strokeWidth="2" fill="none" />
+//         {[240, 250, 260, 270].map((x) => (
+//           <rect key={x} x={x} y="15" width="4" height="4" fill="white" />
+//         ))}
+//       </>
+//     ) : (
+//       <>
+//         <path
+//           d="M320 80H120L100 60H0"
+//           stroke="white"
+//           strokeWidth="2"
+//           fill="none"
+//         />
+//         <path d="M320 80V20L300 0" stroke="white" strokeWidth="2" fill="none" />
+//         {[40, 52, 64].map((x) => (
+//           <rect key={x} x={x} y="61" width="6" height="6" fill="white" />
+//         ))}
+//       </>
+//     )}
+//   </svg>
+// );
 
 const calculateTimeLeft = (deadline: Date): TimeLeft => {
   const now = new Date();
@@ -95,7 +94,10 @@ const Home = ({ title }: HomePage) => {
   }, [deadline]);
 
   return (
-    <div id="beranda" className="min-h-screen bg-gradient-to-br from-[#423E40] via-[#5b5557] to-[#A89EA3] text-white px-5 py-14 md:py-24 relative overflow-hidden">
+    <div
+      id="beranda"
+      className="min-h-screen bg-gradient-to-br from-[#423E40] via-[#5b5557] to-[#A89EA3] text-white px-5 py-14 md:py-24 relative overflow-hidden"
+    >
       {/* Tech Corner Decorations */}
       <div className="absolute hidden md:block top-12 left-0 p-6">
         <img src={linekiri} alt="" />
@@ -154,7 +156,6 @@ const Home = ({ title }: HomePage) => {
                     {item.label}
                   </div>
                   <p className="hidden">{index}</p>
-                  
                 </div>
               ))}
             </div>
@@ -162,7 +163,8 @@ const Home = ({ title }: HomePage) => {
 
           {/* CTA Button */}
           <div className="pt-4">
-            <Link to="/daftar"
+            <Link
+              to="/daftar"
               className="bg-transparent border-2 border-blue-500 text-white px-8 py-1 rounded-full text-lg font-semibold hover:bg-blue-500 hover:border-blue-500 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25"
               aria-label="Register for the open source challenge"
             >
@@ -195,7 +197,6 @@ const Home = ({ title }: HomePage) => {
         />
       </div>
     </div>
-    
   );
 };
 
