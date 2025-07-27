@@ -17,3 +17,9 @@ export interface Competition {
 export interface FormErrors {
   [key: string]: string;
 }
+export interface Kontak {
+  nomor: string;       // Nomor asli (misal: 08...)
+  whatsapp: string;    // Nomor untuk wa.me (format 62...)
+  nama: string;
+  lomba: string;
+};

@@ -74,13 +74,41 @@ const FormRegister: React.FC = () => {
 
     // Simulate API call
     try {
+      const formData = new FormData(form);
+
       await axios.post(
         "https://script.google.com/macros/s/AKfycbwa9PZRzHjGJ0srJf6WLRu6i5mYQTD5LqcZwvyVwzxRIcTGvZnOJ2ivGeWpg24sOEY/exec",
-        new FormData(form)
+        formData
       );
 
-      // Here you would typically send data to your backend
       console.log("Form submitted:", formData);
+
+      // Ambil data dari form
+      const nama = form.nama.value;
+      const lomba = form.lomba.value;
+      let nomor = form.telepon.value.trim();
+      if (nomor.startsWith("08")) {
+        nomor = "62" + nomor.slice(1);
+      }
+
+      // Kirim pesan ke bot WhatsApp
+      try {
+        await axios.post(
+          "https://api.aliffajriadi.my.id/botwa/api/kirim",
+          {
+            nomor: nomor,
+            pesan: `Halo ${nama}!\n\nTerima kasih sudah mendaftar di lomba *${lomba}* 🎉\n\nPendaftaranmu akan segera kami proses 💼\nPastikan semua data dan berkas yang kamu kirimkan sudah lengkap dan sesuai, ya!\n\nUntuk info selanjutnya dan koordinasi lomba, yuk gabung ke grup WhatsApp resmi lewat link berikut:\n${selectedCompetition?.whatsapp}\n\nKami tunggu semangat dan aksi terbaikmu di ajang ini! 💪🔥\n\n💡 Go Open Source, Be the Change! 🚀`,
+          },
+          {
+            headers: {
+              "Content-Type": "application/json",
+              "x-api-key": "CUKIMAYANJAY7778yhuyjhhguywdbaswu909u98",
+            },
+          }
+        );
+      } catch (error) {
+        console.error("Gagal kirim pesan ke bot WA:", error);
+      }
 
       setShowSuccessModal(true);
       document.body.style.overflow = "hidden";

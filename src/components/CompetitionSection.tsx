@@ -130,6 +130,7 @@ const CompetitionSection = () => {
               {modalContent[openModal].title}
             </h3>
             <p>{modalContent[openModal].description}</p>
+            <p className="mt-5 font-semibold">Panduan Lomba : <br /><a href="https://polibatam.id/panduan-lomba-osc-2025" className="text-blue-500 font-normal hover:underline active:underline">polibatam.id/panduan-lomba-osc-2025</a></p>
           </div>
         </div>
       )}
