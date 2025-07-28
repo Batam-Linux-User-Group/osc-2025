@@ -12,7 +12,7 @@ const MediaPartner = () => {
             src={logo}
             alt={`Media Partner ${index + 1}`}
             className="h-16 mx-8"
-            loading='lazy'
+            loading='eager'
           />
         ))}
       </Marquee>
