@@ -6,6 +6,7 @@ import TimelineSection from "../components/TimelineSection";
 import Footer from "../components/LandingPage/Footer";
 import { Link } from "react-router-dom";
 import { File } from "lucide-react";
+import MediaPartner from "../components/LandingPage/Media";
 
 const LandingPage = () => {
   return (
@@ -13,6 +14,8 @@ const LandingPage = () => {
       <Navbar />
       <Home title="Bangun Masa Depan Bersama, Mulai dari " />
       <About tema="Open Source Arena: Battle of Brilliant Minds" />
+      <MediaPartner/>
+
       <CompetitionSection />
       <TimelineSection />
       <Footer />

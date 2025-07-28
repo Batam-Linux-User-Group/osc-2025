@@ -31,7 +31,10 @@ export default function FormField({
         {label}
       </label>
       {description && (
-        <p className="text-gray-400 text-sm mb-2">{description}</p>
+        <div>
+          <p className="text-gray-400 text-sm mb-2">{description}</p>
+          <p className="text-gray-400 text-sm mb-2">PerLomba dikenakan biaya <b>Rp. 15.000</b> <br />Pembayaran: <br />Dana: 082287690013 Nayla Amirah <br />Shopepay: 082287690013 Nayla Amirah</p>
+        </div>
       )}
       <input
         type={type}

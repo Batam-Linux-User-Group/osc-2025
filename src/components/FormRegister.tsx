@@ -2,6 +2,7 @@ import axios from "axios";
 import {
   ArrowLeft,
   GraduationCap,
+  FileIcon,
   Info,
   Mail,
   Phone,
@@ -203,7 +204,7 @@ const FormRegister: React.FC = () => {
             />
 
             <FormField
-              label="Asal Sekolah/Universitas"
+              label="Asal Sekolah/Instansi"
               name="sekolah"
               value={formData.sekolah}
               onChange={handleInputChange}
@@ -213,14 +214,14 @@ const FormRegister: React.FC = () => {
             />
 
             <FormField
-              label="Kartu Pelajar"
+              label="Berkas"
               name="kartupelajar"
               value={formData.kartupelajar}
               onChange={handleInputChange}
               placeholder="Masukkan link"
               error={errors.kartupelajar}
-              icon={GraduationCap}
-              description="Harap masukkan link kartu pelajar yang telah di upload ke google drive, pastikan link tersebut dapat di akses oleh admin."
+              icon={FileIcon}
+              description="Harap Masukkan link berkas berupa Kartu pelajar / identitas dan bukti pembayaran dalam google drive, dan pastikan link dapat di akses oleh admin / publik."
             />
 
             <FormField
