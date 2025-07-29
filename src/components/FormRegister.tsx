@@ -1,35 +1,34 @@
-import axios from "axios";
+import axios from 'axios';
 import {
   ArrowLeft,
-  GraduationCap,
   FileIcon,
   Info,
   Mail,
   Phone,
   School,
   User,
-} from "lucide-react";
-import type React from "react";
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import FormField from "../components/Register/FormField";
-import FormHeader from "../components/Register/FormHeader";
-import SelectField from "../components/Register/SelectField";
-import SubmitButton from "../components/Register/SubmitButton";
-import SuccessModal from "../components/Register/SuccessModal";
-import { competitions } from "../constant/competitions";
-import { validateForm } from "../utils/validation";
-import type { FormData, FormErrors } from "./../types";
-import ModalInfo from "./Register/ModalInfo";
+} from 'lucide-react';
+import type React from 'react';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import FormField from '../components/Register/FormField';
+import FormHeader from '../components/Register/FormHeader';
+import SelectField from '../components/Register/SelectField';
+import SubmitButton from '../components/Register/SubmitButton';
+import SuccessModal from '../components/Register/SuccessModal';
+import { competitions } from '../constant/competitions';
+import { validateForm } from '../utils/validation';
+import type { FormData, FormErrors } from './../types';
+import ModalInfo from './Register/ModalInfo';
 
 const FormRegister: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
-    nama: "",
-    sekolah: "",
-    telepon: "",
-    email: "",
-    lomba: "",
-    kartupelajar: "",
+    nama: '',
+    sekolah: '',
+    telepon: '',
+    email: '',
+    lomba: '',
+    kartupelajar: '',
   });
 
   const [showSuccessModal, setShowSuccessModal] = useState<boolean>(false);
@@ -49,7 +48,7 @@ const FormRegister: React.FC = () => {
     if (errors[name]) {
       setErrors((prev) => ({
         ...prev,
-        [name]: "",
+        [name]: '',
       }));
     }
   };
@@ -64,10 +63,10 @@ const FormRegister: React.FC = () => {
       setErrors(newErrors);
       return;
     }
-    const form = document.getElementById("formRegister");
+    const form = document.getElementById('formRegister');
     if (!form || !(form instanceof HTMLFormElement)) {
       setIsSubmitting(false);
-      setErrors({ ...newErrors, form: "Form not found or invalid." });
+      setErrors({ ...newErrors, form: 'Form not found or invalid.' });
       return;
     }
 
@@ -78,43 +77,43 @@ const FormRegister: React.FC = () => {
       const formData = new FormData(form);
 
       await axios.post(
-        "https://script.google.com/macros/s/AKfycbwa9PZRzHjGJ0srJf6WLRu6i5mYQTD5LqcZwvyVwzxRIcTGvZnOJ2ivGeWpg24sOEY/exec",
+        'https://script.google.com/macros/s/AKfycbwa9PZRzHjGJ0srJf6WLRu6i5mYQTD5LqcZwvyVwzxRIcTGvZnOJ2ivGeWpg24sOEY/exec',
         formData
       );
 
-      console.log("Form submitted:", formData);
+      console.log('Form submitted:', formData);
 
       // Ambil data dari form
       const nama = form.nama.value;
       const lomba = form.lomba.value;
       let nomor = form.telepon.value.trim();
-      if (nomor.startsWith("08")) {
-        nomor = "62" + nomor.slice(1);
+      if (nomor.startsWith('08')) {
+        nomor = '62' + nomor.slice(1);
       }
 
       // Kirim pesan ke bot WhatsApp
       try {
         await axios.post(
-          "https://api.aliffajriadi.my.id/botwa/api/kirim",
+          'https://api.aliffajriadi.my.id/botwa/api/kirim',
           {
             nomor: nomor,
             pesan: `Halo ${nama}!\n\nTerima kasih sudah mendaftar di lomba *${lomba}* 🎉\n\nPendaftaranmu akan segera kami proses 💼\nPastikan semua data dan berkas yang kamu kirimkan sudah lengkap dan sesuai, ya!\n\nUntuk info selanjutnya dan koordinasi lomba, yuk gabung ke grup WhatsApp resmi lewat link berikut:\n${selectedCompetition?.whatsapp}\n\nKami tunggu semangat dan aksi terbaikmu di ajang ini! 💪🔥\n\n💡 Go Open Source, Be the Change! 🚀`,
           },
           {
             headers: {
-              "Content-Type": "application/json",
-              "x-api-key": "CUKIMAYANJAY7778yhuyjhhguywdbaswu909u98",
+              'Content-Type': 'application/json',
+              'x-api-key': 'CUKIMAYANJAY7778yhuyjhhguywdbaswu909u98',
             },
           }
         );
       } catch (error) {
-        console.error("Gagal kirim pesan ke bot WA:", error);
+        console.error('Gagal kirim pesan ke bot WA:', error);
       }
 
       setShowSuccessModal(true);
-      document.body.style.overflow = "hidden";
+      document.body.style.overflow = 'hidden';
     } catch (error) {
-      console.error("Submission error:", error);
+      console.error('Submission error:', error);
     } finally {
       setIsSubmitting(false);
     }
@@ -122,16 +121,16 @@ const FormRegister: React.FC = () => {
 
   const closeModal = (): void => {
     setShowSuccessModal(false);
-    document.body.style.overflow = "unset";
+    document.body.style.overflow = 'unset';
 
     // Reset form
     setFormData({
-      nama: "",
-      sekolah: "",
-      telepon: "",
-      email: "",
-      lomba: "",
-      kartupelajar: "",
+      nama: '',
+      sekolah: '',
+      telepon: '',
+      email: '',
+      lomba: '',
+      kartupelajar: '',
     });
     setErrors({});
   };
@@ -141,7 +140,7 @@ const FormRegister: React.FC = () => {
       await navigator.clipboard.writeText(text);
       // You could add a toast notification here
     } catch (error) {
-      console.error("Failed to copy to clipboard:", error);
+      console.error('Failed to copy to clipboard:', error);
     }
   };
 
@@ -166,7 +165,7 @@ const FormRegister: React.FC = () => {
         <Info size={20} />
       </div>
       <Link
-        to={"/"}
+        to={'/'}
         className="fixed bottom-25 right-5 z-30 bg-orange-500 text-white rounded-full p-3 shadow-lg hover:bg-orange-600 transition-colors cursor-pointer"
       >
         <ArrowLeft size={20} />
