@@ -1,21 +1,26 @@
-import { createBrowserRouter } from "react-router-dom"
-import LandingPage from "../pages/LandingPage"
-import NotFoundPage from "../pages/NotFoundPage"
-import FormRegister from "../pages/FormRegisterPage"
+import { createBrowserRouter } from 'react-router-dom';
+import LandingPage from '../pages/LandingPage';
+import NotFoundPage from '../pages/NotFoundPage';
+import FormRegister from '../pages/FormRegisterPage';
 
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+  [
     {
-        path: "/",
-        element: <LandingPage/>
+      path: '/',
+      element: <LandingPage />,
     },
     {
-        path: "*",
-        element: <NotFoundPage/>
+      path: '*',
+      element: <NotFoundPage />,
     },
     {
-        path: "/daftar",
-        element: <FormRegister/>
-    }
-])
+      path: '/daftar',
+      element: <FormRegister />,
+    },
+  ],
+  {
+    basename: import.meta.env.VITE_BASE_PATH || '',
+  }
+);
 
-export default router
+export default router;
