@@ -1,13 +1,13 @@
 // vite.config.ts
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react-swc'
-import tailwindcss from '@tailwindcss/vite'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react-swc';
+import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig(({ mode }) => {
-  let outDir = 'dist' // default
+  let outDir = 'dist'; // default
 
   if (mode === 'prod') {
-    outDir = '/var/www/osc-2025'
+    outDir = '/var/www/osc';
   }
 
   return {
@@ -19,5 +19,5 @@ export default defineConfig(({ mode }) => {
     build: {
       outDir,
     },
-  }
-})
+  };
+});
