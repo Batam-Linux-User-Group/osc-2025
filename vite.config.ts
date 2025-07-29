@@ -5,12 +5,15 @@ import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig(({ mode }) => {
   let outDir = 'dist'; // default
+  let base = '/';
 
   if (mode === 'prod') {
     outDir = '/var/www/osc';
+    base = '/osc';
   }
 
   return {
+    base,
     plugins: [react(), tailwindcss()],
     server: {
       host: true,
