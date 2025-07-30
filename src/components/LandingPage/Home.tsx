@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { arrowbottom, linekanan, linekiri, Maskot } from "../../assets";
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { arrowbottom, linekanan, linekiri, Maskot } from '../../assets';
+import { motion } from 'motion/react';
 
 interface HomePage {
   title: string;
@@ -68,7 +69,7 @@ const calculateTimeLeft = (deadline: Date): TimeLeft => {
 
 const Home = ({ title }: HomePage) => {
   // DEADLINE
-  const deadline = new Date("2025-08-16T00:00:00");
+  const deadline = new Date('2025-08-16T00:00:00');
   const [timeLeft, setTimeLeft] = useState<TimeLeft>(
     calculateTimeLeft(deadline)
   );
@@ -96,7 +97,8 @@ const Home = ({ title }: HomePage) => {
   return (
     <div
       id="beranda"
-      className="min-h-screen bg-gradient-to-br from-[#423E40] via-[#5b5557] to-[#A89EA3] text-white px-5 py-14 md:py-24 relative overflow-hidden"
+      className="min-h-screen bg-gradient-to-br from-[#423E40] via-gray-800 to-slate-900 text-white px-5 py-14 md:py-24 relative overflow-hidden"
+      // className="min-h-screen bg-gradient-to-br from-[#423E40] via-[#5b5557] to-[#A89EA3] text-white px-5 py-14 md:py-24 relative overflow-hidden"
     >
       {/* Tech Corner Decorations */}
       <div className="absolute hidden md:block top-12 left-0 p-6">
@@ -112,9 +114,14 @@ const Home = ({ title }: HomePage) => {
       <div className="absolute bottom-6 left-6 w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded"></div>
       <div className="absolute bottom-8 left-8 w-8 h-8 bg-gradient-to-br from-orange-500 to-orange-600 rounded"></div>
 
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-16 relative z-10">
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-16 relative z-10 xl:pt-24">
         {/* Left Content */}
-        <div className="lg:w-1/2 space-y-2 flex flex-col justify-center pt-10 md:ps-10">
+        <motion.div
+          initial={{ opacity: 0, x: -100 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 2 }}
+          className="lg:w-1/2 space-y-2 flex flex-col justify-center pt-10 md:ps-10"
+        >
           <div className="space-y-2 md:space-y-6">
             <h1 className="text-3xl lg:text-3xl xl:text-4xl font-bold leading-tight">
               {title} <span className="text-orange-500">Open Source!</span>
@@ -132,20 +139,20 @@ const Home = ({ title }: HomePage) => {
             <div className="flex gap-4 text-center font-mono">
               {[
                 {
-                  value: timeLeft.days.toString().padStart(2, "0"),
-                  label: "days",
+                  value: timeLeft.days.toString().padStart(2, '0'),
+                  label: 'days',
                 },
                 {
-                  value: timeLeft.hours.toString().padStart(2, "0"),
-                  label: "hours",
+                  value: timeLeft.hours.toString().padStart(2, '0'),
+                  label: 'hours',
                 },
                 {
-                  value: timeLeft.minutes.toString().padStart(2, "0"),
-                  label: "minutes",
+                  value: timeLeft.minutes.toString().padStart(2, '0'),
+                  label: 'minutes',
                 },
                 {
-                  value: timeLeft.seconds.toString().padStart(2, "0"),
-                  label: "seconds",
+                  value: timeLeft.seconds.toString().padStart(2, '0'),
+                  label: 'seconds',
                 },
               ].map((item, index) => (
                 <div key={item.label} className="flex flex-col">
@@ -171,17 +178,22 @@ const Home = ({ title }: HomePage) => {
               Daftar
             </Link>
           </div>
-        </div>
+        </motion.div>
 
         {/* Right Content - Robot Mascot */}
-        <div className="lg:w-1/2 flex justify-center relative">
+        <motion.div
+          initial={{ opacity: 0, x: 100 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 2 }}
+          className="lg:w-1/2 flex justify-center relative"
+        >
           <img
             src={Maskot}
             alt="maskot"
             className="max-w-full h-auto"
             loading="lazy"
           />
-        </div>
+        </motion.div>
       </div>
 
       {/* Bottom Arrow Indicator */}
@@ -191,8 +203,8 @@ const Home = ({ title }: HomePage) => {
           alt="segitiga"
           className="animate-bounce w-8 h-auto cursor-pointer"
           onClick={() => {
-            const section = document.getElementById("tentang-lomba");
-            section?.scrollIntoView({ behavior: "smooth" });
+            const section = document.getElementById('tentang-lomba');
+            section?.scrollIntoView({ behavior: 'smooth' });
           }}
         />
       </div>

@@ -1,11 +1,6 @@
-
-import FormRegister from '../components/FormRegister'
+import FormRegister from '../components/FormRegister';
 const FormRegisterPage = () => {
-  return (
-    <div className=''>
-        <FormRegister/>
-    </div>
-  )
-}
+  return <FormRegister />;
+};
 
-export default FormRegisterPage
+export default FormRegisterPage;

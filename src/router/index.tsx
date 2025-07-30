@@ -10,12 +10,12 @@ const router = createBrowserRouter(
       element: <LandingPage />,
     },
     {
-      path: '*',
-      element: <NotFoundPage />,
-    },
-    {
       path: '/daftar',
       element: <FormRegister />,
+    },
+    {
+      path: '*',
+      element: <NotFoundPage />,
     },
   ],
   {
