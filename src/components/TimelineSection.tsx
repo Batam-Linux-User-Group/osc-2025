@@ -138,7 +138,7 @@ const TimelineSection = () => {
         </div>
 
         {/* Mobile Timeline */}
-        <div className="lg:hidden">
+        <div className="lg:hidden overflow-x-hidden">
           <div className="relative">
             {/* Timeline Line */}
             <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-orange-500"></div>

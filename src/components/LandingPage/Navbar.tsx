@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
-import { logo } from "../../assets";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from 'react';
+import { logo } from '../../assets';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -25,18 +25,18 @@ const Navbar = () => {
       setLastScrollY(currentScrollY);
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, [lastScrollY]);
 
   return (
     <nav
       className={`w-full fixed top-0 z-50 transition-all duration-500 ease-in-out ${
-        showNavbar ? "translate-y-0" : "-translate-y-full"
+        showNavbar ? 'translate-y-0' : '-translate-y-full'
       } ${
         hasScrolled
-          ? "bg-black/50 backdrop-blur-md shadow-2xl border-b border-slate-500/20"
-          : "bg-transparent"
+          ? 'bg-black/50 backdrop-blur-md shadow-2xl border-b border-slate-500/20'
+          : 'bg-transparent'
       } text-slate-50`}
     >
       <div className="max-w-7xl mx-auto px-6 sm:px-10 py-4 flex justify-between items-center">
@@ -53,7 +53,26 @@ const Navbar = () => {
 
         {/* Desktop Menu */}
         <div className="hidden md:flex space-x-6">
-          <a href="https://polibatam.id/panduan-lomba-osc-2025" className="text-sm font-semibold hover:text-slate-300 transition-all duration-300 relative group px-3 py-2 rounded-lg hover:bg-slate-700/30">
+          <Link
+            to="/"
+            className="text-sm font-semibold hover:text-slate-300 transition-all duration-300 relative group px-3 py-2 rounded-lg hover:bg-slate-700/30"
+          >
+            Home
+            <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-slate-400 group-hover:w-full transition-all duration-300 rounded-full"></span>
+            <span className="absolute inset-0 bg-slate-400/0 group-hover:bg-slate-400/10 rounded-lg transition-all duration-300"></span>
+          </Link>
+          <Link
+            to="/leaderboard"
+            className="text-sm font-semibold hover:text-slate-300 transition-all duration-300 relative group px-3 py-2 rounded-lg hover:bg-slate-700/30"
+          >
+            Leaderboard
+            <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-slate-400 group-hover:w-full transition-all duration-300 rounded-full"></span>
+            <span className="absolute inset-0 bg-slate-400/0 group-hover:bg-slate-400/10 rounded-lg transition-all duration-300"></span>
+          </Link>
+          <a
+            href="https://polibatam.id/panduan-lomba-osc-2025"
+            className="text-sm font-semibold hover:text-slate-300 transition-all duration-300 relative group px-3 py-2 rounded-lg hover:bg-slate-700/30"
+          >
             Panduan Lomba
             <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-slate-400 group-hover:w-full transition-all duration-300 rounded-full"></span>
             <span className="absolute inset-0 bg-slate-400/0 group-hover:bg-slate-400/10 rounded-lg transition-all duration-300"></span>
@@ -84,7 +103,7 @@ const Navbar = () => {
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d={
-                  menuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"
+                  menuOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'
                 }
                 className="transition-all duration-300"
               />
@@ -97,18 +116,20 @@ const Navbar = () => {
       {/* Mobile Dropdown */}
       <div
         className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-          menuOpen ? "max-h-64 opacity-100" : "max-h-0 opacity-0"
+          menuOpen ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0'
         }`}
       >
         <div className="bg-gradient-to-b from-slate-900/50 to-slate-950/50 px-6 pb-6 pt-2 space-y-2 border-t border-slate-500/20 backdrop-blur-sm">
-          <a href="https://polibatam.id/panduan-lomba-osc-2025"
+          <a
+            href="https://polibatam.id/panduan-lomba-osc-2025"
             className="block w-full text-left text-sm font-semibold hover:text-slate-300 transition-all duration-300 px-4 py-3 rounded-lg hover:bg-slate-700/30 relative group transform hover:translate-x-1"
           >
             <span className="relative z-10">Panduan Lomba</span>
             <span className="absolute left-0 top-1/2 transform -translate-y-1/2 w-1 h-0 bg-slate-400 group-hover:h-6 transition-all duration-300 rounded-full"></span>
             <span className="absolute inset-0 bg-slate-400/0 group-hover:bg-slate-400/10 rounded-lg transition-all duration-300"></span>
           </a>
-          <Link to="/daftar"
+          <Link
+            to="/daftar"
             onClick={closeMenu}
             className="block w-full text-left text-sm font-semibold hover:text-slate-300 transition-all duration-300 px-4 py-3 rounded-lg hover:bg-slate-700/30 relative group transform hover:translate-x-1"
           >

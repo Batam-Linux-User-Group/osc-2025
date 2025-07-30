@@ -1,7 +1,8 @@
 import { createBrowserRouter } from 'react-router-dom';
-import LandingPage from '../pages/LandingPage';
-import NotFoundPage from '../pages/NotFoundPage';
 import FormRegister from '../pages/FormRegisterPage';
+import LandingPage from '../pages/LandingPage';
+import LeaderboardPage from '../pages/LeaderboardPage';
+import NotFoundPage from '../pages/NotFoundPage';
 
 const router = createBrowserRouter(
   [
@@ -12,6 +13,10 @@ const router = createBrowserRouter(
     {
       path: '/daftar',
       element: <FormRegister />,
+    },
+    {
+      path: '/leaderboard',
+      element: <LeaderboardPage />,
     },
     {
       path: '*',
