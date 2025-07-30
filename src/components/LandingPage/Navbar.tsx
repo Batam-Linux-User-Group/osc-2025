@@ -130,7 +130,7 @@ const Navbar = () => {
             <span className="absolute inset-0 bg-slate-400/0 group-hover:bg-slate-400/10 rounded-lg transition-all duration-300"></span>
           </Link>
           <Link
-            to="/daftar"
+            to="/leaderboard"
             onClick={closeMenu}
             className="block w-full text-left text-sm font-semibold hover:text-slate-300 transition-all duration-300 px-4 py-3 rounded-lg hover:bg-slate-700/30 relative group transform hover:translate-x-1"
           >
