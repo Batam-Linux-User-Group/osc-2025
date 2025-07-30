@@ -120,6 +120,24 @@ const Navbar = () => {
         }`}
       >
         <div className="bg-gradient-to-b from-slate-900/50 to-slate-950/50 px-6 pb-6 pt-2 space-y-2 border-t border-slate-500/20 backdrop-blur-sm">
+          <Link
+            to="/"
+            onClick={closeMenu}
+            className="block w-full text-left text-sm font-semibold hover:text-slate-300 transition-all duration-300 px-4 py-3 rounded-lg hover:bg-slate-700/30 relative group transform hover:translate-x-1"
+          >
+            <span className="relative z-10">Home</span>
+            <span className="absolute left-0 top-1/2 transform -translate-y-1/2 w-1 h-0 bg-slate-400 group-hover:h-6 transition-all duration-300 rounded-full"></span>
+            <span className="absolute inset-0 bg-slate-400/0 group-hover:bg-slate-400/10 rounded-lg transition-all duration-300"></span>
+          </Link>
+          <Link
+            to="/daftar"
+            onClick={closeMenu}
+            className="block w-full text-left text-sm font-semibold hover:text-slate-300 transition-all duration-300 px-4 py-3 rounded-lg hover:bg-slate-700/30 relative group transform hover:translate-x-1"
+          >
+            <span className="relative z-10">Leaderboard</span>
+            <span className="absolute left-0 top-1/2 transform -translate-y-1/2 w-1 h-0 bg-slate-400 group-hover:h-6 transition-all duration-300 rounded-full"></span>
+            <span className="absolute inset-0 bg-slate-400/0 group-hover:bg-slate-400/10 rounded-lg transition-all duration-300"></span>
+          </Link>
           <a
             href="https://polibatam.id/panduan-lomba-osc-2025"
             className="block w-full text-left text-sm font-semibold hover:text-slate-300 transition-all duration-300 px-4 py-3 rounded-lg hover:bg-slate-700/30 relative group transform hover:translate-x-1"
