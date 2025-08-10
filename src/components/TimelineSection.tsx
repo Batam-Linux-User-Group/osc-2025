@@ -91,12 +91,12 @@ const TimelineSection = () => {
                     index % 2 === 0 ? 'pr-8 text-right' : 'pl-8 text-left'
                   }`}
                 >
-                  <div className="bg-white relative overflow-hidden rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                  <div className="bg-white relative overflow-hidden rounded-xl shadow-lg p-6 hover:shadow-xl group transition-all duration-300 transform hover:-translate-y-2">
                     <img
                       src={item.image}
                       alt={item.title}
                       className={clsx(
-                        'absolute top-1/2 -translate-y-1/2 opacity-70 h-[90%]',
+                        'absolute top-1/2 -translate-y-1/2 opacity-70 h-[90%] group-hover:opacity-100 transition duration-300',
                         index % 2 === 0
                           ? 'left-0 -translate-x-1/4'
                           : 'right-0 translate-x-1/4'

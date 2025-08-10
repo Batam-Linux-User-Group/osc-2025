@@ -1,12 +1,12 @@
 import type { Competition } from '../types';
 
 export const competitions: Competition[] = [
-  {
-    id: 'mascot-design',
-    name: 'Mascot Design',
-    contactNumber: '085763542044',
-    whatsapp: 'https://chat.whatsapp.com/GppnWWXY7HK4Jx1POe1YGW?mode=ac_t',
-  },
+  // {
+  //   id: 'mascot-design',
+  //   name: 'Mascot Design',
+  //   contactNumber: '085763542044',
+  //   whatsapp: 'https://chat.whatsapp.com/GppnWWXY7HK4Jx1POe1YGW?mode=ac_t',
+  // },
   {
     id: 'web-design',
     name: 'Web Design',
