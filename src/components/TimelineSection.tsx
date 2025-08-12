@@ -19,7 +19,7 @@ const TimelineSection = () => {
       image: pendaftaran,
     },
     {
-      date: '12 Agustus 2025',
+      date: '13 Agustus 2025',
       title: 'Technical Meeting',
       icon: <Users className="w-6 h-6" />,
       color: 'bg-orange-500',
